@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DES Encryption/Decryption</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">DES Encrypt / Decrypt</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="bg-red-100 text-red-700 p-2 rounded mb-4">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+      <div>
+        <label class="block text-gray-700 mb-1">Chọn file:</label>
+        <input type="file" name="file" required class="w-full border px-3 py-2 rounded">
+      </div>
+      <div>
+        <label class="block text-gray-700 mb-1">Nhập khóa (8 ký tự):</label>
+        <input type="text" name="key" maxlength="8" required class="w-full border px-3 py-2 rounded">
+      </div>
+      <div class="flex justify-between">
+        <button name="action" value="encrypt" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Mã hóa</button>
+        <button name="action" value="decrypt" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Giải mã</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
